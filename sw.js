@@ -1,18 +1,13 @@
-const VERSION = 'v17';
-const OFFLINE_CACHE = 'offline-cache-' + VERSION;
-const APP_CACHE = 'app-cache-' + VERSION;
+const OFFLINE_VERSION = 3;
+const CACHE_NAME = "offline-cache-v3";
+const OFFLINE_URL = "offline/index.html";
 
-self.addEventListener('install', event => {
-    event.waitUntil(installServiceWorker());
-});
+// List of files to cache for offline usage
+const OFFLINE_FILES = [
+    'offline/index.html'
+];
 
-async function installServiceWorker() {
-    console.log(VERSION, 'Installing Service Worker...');
-
-    const appCache = await caches.open(APP_CACHE);
-    const offlineCache = await caches.open(OFFLINE_CACHE);
-// Your original app files to cache
-await appCache.addAll([
+const STATIC_FILES = [
     '/',
     '/?utm_source=pwa',
     '/manifest.json',
@@ -26,46 +21,74 @@ await appCache.addAll([
     '/favicon-96x96.png',
     '/apple-touch-icon.png',
     '/web-app-manifest-192x192.png'
-])
+];
 
- // Cache all offline files (update list as needed or automate with a build tool)
- await offlineCache.addAll([
-    '/offline/index.html',
-    '/offline/style.css',
-    '/offline/script.js'
-])
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
 
-console.log(VERSION, 'Service Worker installed.');
-}
+      // Combine both static and offline files
+      const allFiles = [...new Set([...STATIC_FILES, ...OFFLINE_FILES])];
 
-self.addEventListener('activate', async event => {
-console.log(VERSION, 'Activating new Service Worker...');
-const keys = await caches.keys();
-await Promise.all(keys.map(key => {
-    if (![APP_CACHE, OFFLINE_CACHE].includes(key)) {
-        return caches.delete(key);
-    }
-}));
+      await cache.addAll(allFiles.map((url) => new Request(url, { cache: "reload" })));
+    })()
+  );
+  self.skipWaiting();
 });
 
-self.addEventListener('fetch', event => {
-event.respondWith(networkFirst(event.request));
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      if ("navigationPreload" in self.registration) {
+        await self.registration.navigationPreload.enable();
+      }
+
+      // Delete old caches not matching the current version
+      const cacheNames = await caches.keys();
+      await Promise.all(
+        cacheNames.map((name) => {
+          if (name !== CACHE_NAME) {
+            return caches.delete(name);
+          }
+        })
+      );
+    })()
+  );
+  self.clients.claim();
 });
 
-async function networkFirst(request) {
-try {
-    const networkResponse = await fetch(request);
-    return networkResponse;
-} catch (err) {
-    const cache = await caches.open(APP_CACHE);
-    const offlineCache = await caches.open(OFFLINE_CACHE);
+self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () => {
+        try {
+          const preloadResponse = await event.preloadResponse;
+          if (preloadResponse) return preloadResponse;
 
-    // Serve offline fallback for homepage
-    if (request.mode === 'navigate') {
-        return offlineCache.match('/offline/index.html');
-    }
-
-    const cachedResponse = await cache.match(request) || await offlineCache.match(request);
-    return cachedResponse || Response.error();
-}
-}
+          const networkResponse = await fetch(event.request);
+          return networkResponse;
+        } catch (error) {
+          console.log("Fetch failed; returning offline page instead.", error);
+          const cache = await caches.open(CACHE_NAME);
+          return await cache.match(OFFLINE_URL);
+        }
+      })()
+    );
+  } else {
+    // Try cache first for static and offline resources
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        return (
+          cachedResponse ||
+          fetch(event.request).catch(() => {
+            // Optional: Fallback image or asset
+            if (event.request.destination === "document") {
+              return caches.match("offline/index.html");
+            }
+          })
+        );
+      })
+    );
+  }
+});
