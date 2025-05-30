@@ -1,10 +1,10 @@
-const OFFLINE_VERSION = 12;
-const CACHE_NAME = "offline-cache-v12";
+const OFFLINE_VERSION = 13;
+const CACHE_NAME = "offline-cache-v13";
 const OFFLINE_URL = "/offline/";
 
 // List of files to cache for offline usage
 const OFFLINE_FILES = [
-    '/offline/index.html'
+    '/offline'
 ];
 
 const STATIC_FILES = [
@@ -84,7 +84,7 @@ self.addEventListener("fetch", (event) => {
           fetch(event.request).catch(() => {
             // Optional: Fallback image or asset
             if (event.request.destination === "document") {
-              return caches.match("/offline/");
+              return caches.match("/offline");
             }
           })
         );
