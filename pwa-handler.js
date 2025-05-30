@@ -6,14 +6,6 @@ window.addEventListener('load', () => {
     window.addEventListener('offline', updateOnlineStatus);
 });
 
-if ('registerProtocolHandler' in navigator) {
-    navigator.registerProtocolHandler(
-        "web+nassimspace",
-        `${location.origin}/?q=%s`,
-        "NassimSpace Protocol"
-    );
-}
-
 function updateOnlineStatus() {
     const offlineBanner = document.getElementById('offline-banner');
     if (!navigator.onLine) {

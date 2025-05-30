@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nsspace-v3';
+const CACHE_NAME = 'nsspace-v4';
 const OFFLINE_PAGE = '/offline.html';
 const STATIC_ASSETS = [
   '/',

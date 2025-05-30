@@ -28,5 +28,11 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+nassimspace",
+      "url": "/?q=%s"
+    }
   ]
 }
