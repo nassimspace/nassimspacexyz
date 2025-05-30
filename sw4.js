@@ -1,4 +1,4 @@
-const version = "05302025b";
+const version = "05302025c";
 const cacheName = `nsspace-${version}`;
 const OFFLINE_PAGE = '/offline.html';
 self.addEventListener('install', e => {
