@@ -1,5 +1,5 @@
-const version = "05302025a";
-const cacheName = `nassimspace-${version}`;
+const version = "05302025b";
+const cacheName = `nsspace-${version}`;
 const OFFLINE_PAGE = '/offline.html';
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -8,6 +8,7 @@ self.addEventListener('install', e => {
         '/',
         '/?utm_source=pwa',
         '/manifest.json',
+        '/pwa-handler.js',
         '/favicon.svg',
         '/favicon.ico',
         '/web-app-manifest-512x512.png',
