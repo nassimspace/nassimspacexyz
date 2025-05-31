@@ -1,4 +1,4 @@
-const version = "05302025e";
+const version = "05312025d";
 const cacheName = `nsspace-${version}`;
 const OFFLINE_PAGE = '/offline.html';
 self.addEventListener('install', e => {
@@ -8,12 +8,10 @@ self.addEventListener('install', e => {
         '/',
         '/?utm_source=pwa',
         '/manifest.json',
-        '/pwa-handler.js',
         '/favicon.svg',
         '/favicon.ico',
         '/web-app-manifest-512x512.png',
         '/web-app-manifest-144x144.png',
-        '/normalize.css',
         '/main.css',
         '/script.js',
         '/favicon-96x96.png',

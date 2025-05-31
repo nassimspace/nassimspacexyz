@@ -1,3 +1,23 @@
+
+// pwa-handler
+
+window.addEventListener('load', () => {
+  updateOnlineStatus();
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+});
+
+function updateOnlineStatus() {
+  const offlineBanner = document.getElementById('offline-banner');
+  if (!navigator.onLine) {
+      offlineBanner?.classList.remove('hidden');
+      console.warn("You are offline");
+  } else {
+      offlineBanner?.classList.add('hidden');
+      console.info("You are online");
+  }
+}
+
 const buttons = document.querySelectorAll(".card-buttons button");
 const sections = document.querySelectorAll(".card-section");
 const card = document.querySelector(".card");

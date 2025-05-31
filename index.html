@@ -13,6 +13,8 @@
    <!-- End Google Tag Manager -->
       <link rel="preconnect" href="https://disqus.com">
       <link rel="preconnect" href="https://giphy.com">
+      <link rel="preload" href="./main.css" as="style">
+      <link rel="preload" href="./script.js" as="script" >
       <meta name="theme-color" content="#70ffd7">
       <meta name="mobile-web-app-capable" content="yes">
       <meta name="application-name" content="Nassim Abdellaoui | Creative Technologist">
@@ -33,14 +35,13 @@
       <meta property="twitter:description" content="IT DevOps, Web & SEO Technologies. Fluent in Digital Media Creation, Marketing and Design Thinking" />
       <meta property="twitter:image" content="https://nassim.space/metaintro.gif" />
       <!-- Meta Tags Generated with https://metatags.io -->
-      <link rel="stylesheet" href="./normalize.css">
-      <link rel="stylesheet" href="./main.css">
       <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <meta name="apple-mobile-web-app-title" content="Nassim Abdellaoui | Creative Technologist" />
       <link rel="manifest" href="/manifest.json" />
+      <link rel="stylesheet" href="./main.css">
       <script type="application/ld+json">
          {
            "@context": "http://schema.org",
@@ -197,7 +198,7 @@
                   <div class="card-cover" style="background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXExOHphcm42eDBhOG54aWdiZG5pOWFjZ2xnOWk3YXo0aTZod290OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qvp6Z2fidQR34IcwQ5/giphy.gif')"></div>
                   <img class="card-avatar" src="https://avatars.githubusercontent.com/u/37777670?v=4" alt="avatar" loading="lazy">
                   <h1 class="card-fullname">Nassim Abdellaoui</h1>
-                  <h2 class="card-jobtitle">Creative Technologist | IT DevOps Architect</h2>
+                  <h2 class="card-jobtitle">Creative Technologist</h2>
                </div>
                <div class="card-main">
                   <div class="card-section is-active" id="about">
@@ -215,6 +216,7 @@
                            Let's join forces and build something remarkable together! 😊
                         </p>
                      </div>
+                  </div>
                      <div class="card-social">
                         <a href="https://github.com/nassimspace" rel="author noopener" target="_blank" tabindex="0" role="link" aria-label="My Github Profile Page" title="My Github Profile Page">
                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
@@ -398,7 +400,6 @@
       </main>
       <!-- partial -->
       <script>"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("/sw4.js",{scope:"/"}).then(e=>{setInterval(()=>{e.update()},36e5)})})</script>
-      <script  src="./script.js"></script>
-      <script  src="./pwa-handler.js" defer></script>
+      <script src="./script.js" defer></script>
    </body>
 </html>

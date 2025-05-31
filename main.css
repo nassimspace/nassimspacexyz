@@ -1,3 +1,5 @@
+url(offline) url(apple-touch-icon.png) url(favicon-96x96.png) url(favicon.ico) url(favicon.svg) url(google24c6523b6906e7be.html) url(index.html) url(LICENSE) url(main.css) url(manifest copy.json) url(manifest.json) url(metaintro.gif) url(metaintro.mp4) url(normalize.css) url(normalize.min.css.map) url(offline.html) url(pwa-handler.js) url(README.md) url(script.js) url(site.webmanifest) url(sw3.js) url(sw4.js) url(web-app-manifest-144x144.png) url(web-app-manifest-192x192.png) url(web-app-manifest-512x512.png)
+
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
 * {
   box-sizing: border-box;
