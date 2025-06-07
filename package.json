@@ -1,0 +1,51 @@
+{
+  "name": "nassimspacexyz",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Web Card",
+  "type": "module",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watchTask",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nassimspace/nassimspacexyz.git"
+  },
+  "keywords": [
+    "portfolio",
+    "web",
+    "card",
+    "html",
+    "css",
+    "js",
+    "profile",
+    "page",
+    "landing",
+    "page"
+  ],
+  "author": "Nassim Abdellaoui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nassimspace/nassimspacexyz/issues"
+  },
+  "homepage": "https://github.com/nassimspace/nassimspacexyz#readme",
+  "devDependencies": {
+    "del": "8.0.0",
+    "gulp": "5.0.0",
+    "gulp-autoprefixer": "9.0.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-concat": "2.6.1",
+    "gulp-htmlmin": "5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "9.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "3.0.2",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "workbox-build": "7.1.1"
+  }
+}
