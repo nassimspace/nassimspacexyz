@@ -1,6 +1,5 @@
 ## Professional Profile Business Card
 
-## Credits
+Live URL: **[NASSIM.SPACE](https://nassim.space)**
 
-Originally Inspired by **[JotForm's Pen](https://codepen.io/team/jotform/pen/XWmqoMp)**
 
