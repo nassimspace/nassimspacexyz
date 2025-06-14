@@ -75,7 +75,7 @@ class GDriveFolderEmbed extends HTMLElement {
       iframe.setAttribute("src", url);
       iframe.setAttribute("title", title);
       iframe.setAttribute("loading", "lazy");
-      iframe.setAttribute("style", "justify-content: space-evenly; width:50dvw; height: 75dvh;display: inline-block; background: #180436; position: relative; object-fit: contain; border: none;");
+      iframe.setAttribute("style", "justify-content: space-evenly; width:75dvw; height: 75dvh;display: inline-block; background: #180436; position: relative; object-fit: contain; border: none;");
       iframe.setAttribute("aria-label", title) ;        
       iframe.setAttribute("role", "Presentation") ;
       iframe.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
